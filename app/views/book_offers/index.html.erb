@@ -1,0 +1,22 @@
+<!-- Banner -->
+<section class="home-banner" style="padding: 5px; background-image: url('<%= asset_path("BooksBg.png") %>'); background-size: cover; background-position: center; background-repeat: no-repeat; background-color: #FEFAE0;">
+  <div style="display: flex; justify-content: center; align-items: center;">
+    <%= image_tag "BookNestLogo.png", alt: "BookNest Logo", style: "height: 180px; filter: drop-shadow(2px 2px 4px rgba(255, 255, 255, 0.7));" %>
+  </div>
+</section>
+<!-- Search field -->
+<div style="margin-top: 20px; position: relative;">
+  <i class="fa-brands fa-searchengin" style="position: absolute; top: 50%; left: 16px; transform: translateY(-50%); color: #DDA15E; font-size: 20px;"></i>
+  <input type="text" placeholder="Search for a book..."
+    style="padding: 12px 12px 12px 45px; border-radius: 10px; border: 2px solid #DDA15E; box-shadow: 2px 2px 6px rgba(0,0,0,0.1); width: 100%; font-size: 16px;">
+</div>
+<!-- Book Cards Section -->
+<section style="padding: 20px; padding-bottom: 100px; background-color: #FFEFAE0;">
+  <% if @book_offers.present? %>
+    <% @book_offers.each do |book_offer| %>
+      <%= render partial: "pages/home_page_cards", locals: { book_offer: book_offer } %>
+    <% end %>
+  <% else %>
+    <p>No books found.</p>
+  <% end %>
+</section>

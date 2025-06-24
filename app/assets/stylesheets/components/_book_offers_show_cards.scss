@@ -1,0 +1,124 @@
+.card-trip {
+  overflow: hidden;
+  background: white;
+  box-shadow: 0 0 15px rgba(0,0,0,0.2);
+  padding-bottom: 8px;
+}
+
+
+.card-trip > img {
+  height: 200px;
+  width: 100%;
+  object-fit: cover;
+  object-position: 0 -40px;
+}
+
+.card-trip h2 {
+  font-size: 16px;
+  font-weight: bold;
+  margin: 0;
+}
+
+.card-trip p {
+  font-size: 12px;
+  opacity: .7;
+  margin: 0;
+}
+
+.card-trip .card-trip-infos {
+  padding: 16px;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  position: relative;
+}
+
+.card-trip-infos .card-trip-user {
+  position: absolute;
+  right: 16px;
+  top: -20px;
+  width: 40px;
+}
+
+.card-trip button {
+  margin-top: auto;
+  width: 100%;
+  padding: 4px;
+  border: none;
+  color: white;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.book-offer-cards {
+  margin-bottom: 80px;
+}
+.book-offer-card {
+  display: flex;
+  overflow: hidden;
+  height: 152px;
+  background: white;
+  box-shadow: 0 0 15px rgba(0,0,0,0.2);
+  align-items: top;
+  margin: 12px 0;
+  border-radius: 10px;
+  padding: 12px 12px;
+}
+
+/* LEFT: Book image */
+.book-offer-infos {
+  flex-shrink: 0;
+  padding-right: 12px;
+
+  img {
+    height: 120px;
+    width: 100px;
+    object-fit: cover;
+  }
+}
+
+.book-offer-description {
+  flex-grow: 1;
+  max-width: 150px;
+  font-size: 12px;
+  line-height: 1.4;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 5;
+  -webkit-box-orient: vertical;
+  margin-right: 12px;
+}
+.book-offer-right {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  justify-content: space-between;
+  flex-shrink: 0;
+  height: 100%;
+  padding: 8px 0;
+}
+
+.book-offer-user {
+  display: flex;
+  align-items: center;
+
+  .book-offer-img {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-bottom: 8px;
+  }
+}
+
+.book-offer-button .btn {
+  font-size: 14px;
+  padding: 6px 8px;
+  border-radius: 6px;
+  width: 100%;
+}
+
+.modal-body {
+  text-align: start;
+}

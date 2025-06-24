@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>BookNest</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+    <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
+    <%= javascript_importmap_tags %>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+  </head>
+  <body>
+    <% if notice %>
+      <div class="flash flash-notice" data-controller="flash"><%= notice %></div>
+    <% end %>
+    <% if alert %>
+      <div class="flash flash-alert" data-controller="flash"><%= alert %></div>
+    <% end %>
+    <%# unless controller_name == 'home' && action_name == 'index' %>
+    <%#= render 'pages/header' %>
+    <%# end %>
+    <main class="main-content">
+      <%= yield %>
+    </main>
+    <%= render 'pages/bottom_nav' %>
+  </body>
+</html>

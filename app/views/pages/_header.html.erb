@@ -1,0 +1,22 @@
+<header class="main-header">
+  <%= link_to "#", data: { controller: "scroll-top" }, class: "header-link" do %>
+    <div class="logo-container">
+      <div class="logo-title">
+        <%= image_tag("BookNestLogoNoName.png", alt: "BookNest Logo", class: "logo") %>
+        <span class="brand-name">Book Nest</span>
+      </div>
+      <span class="header-slogan">Powered by passion, shared for free.</span>
+    </div>
+  <% end %>
+
+  <%= link_to(user_signed_in? ? edit_user_registration_path : new_user_session_path, class: "header-account-link") do %>
+    <div class="account-info">
+      <% if user_signed_in? && current_user.respond_to?(:avatar) && current_user.avatar.attached? %>
+        <%= image_tag current_user.avatar.variant(resize_to_fill: [36, 36]), class: "profile-avatar" %>
+      <% else %>
+        <i class="fas fa-user-circle default-avatar-icon"></i>
+      <% end %>
+      <p class="account-label">Account</p>
+    </div>
+  <% end %>
+</header>

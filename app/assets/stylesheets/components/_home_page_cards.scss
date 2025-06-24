@@ -1,0 +1,83 @@
+.card-book {
+  background-color: white;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  padding: 16px;
+  margin-bottom: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  height: auto;
+  position: relative;
+
+  img {
+    margin: 0 auto;
+    width: 120px;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .card-book-infos {
+    flex: 1;
+
+    h2 {
+      font-size: 16px;
+      font-weight: 500;
+      margin-bottom: 0;
+    }
+
+    p {
+      font-size: 12px;
+      margin-bottom: 0;
+    }
+  }
+
+  .link-cover {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 100%;
+    left: 0;
+  }
+}
+
+.search-container {
+  margin-top: 20px;
+  position: relative;
+}
+.search-input {
+  padding: 12px;
+  border: 0px;
+  border-radius: 50px;
+  box-shadow: 2px 2px 6px rgba(0,0,0,0.3);
+  width: 100%;
+  font-size: 16px;
+}
+
+.search-btn {
+  position: absolute;
+  top: 50%;
+  right: 0;
+  transform: translateY(-50%);
+  font-size: 20px;
+  color: #000000;
+  border: 0px solid #4A4A4A;
+  background-color: #EA9010;
+  padding: 9px 24px;
+  border-radius: 50px;
+  font-weight: 500;
+  opacity: 0.6;
+  transition: opacity 0.3s ease;
+}
+.home-books-container {
+  margin: 20px 20px 80px 20px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+}
+
+.search-container {
+  background-color: transparent;
+  margin-bottom: 20px;
+}

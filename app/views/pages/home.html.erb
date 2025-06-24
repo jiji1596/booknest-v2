@@ -1,0 +1,30 @@
+<!-- Banner -->
+<section class="home-banner" style="padding: 20px; padding-bottom: 100px; background-color: #FEFAE0; background-image: url('<%= asset_path("BooksBg.png") %>'); background-size: cover; background-position: center; background-repeat: no-repeat;">
+  <!-- Logo -->
+  <div style="display: flex; justify-content: center; align-items: center;">
+    <%= image_tag "BookNestLogo.png", alt: "BookNest Logo", style: "height: 180px; filter: drop-shadow(2px 2px 4px rgba(255, 255, 255, 0.7));" %>
+  </div>
+
+  <!-- Search field -->
+  <div class="search-container" style="margin-top: 20px; margin-bottom: 20px;">
+    <%= form_with url: books_path, method: :get do %>
+      <%= text_field_tag :query,
+            params[:query],
+            class: "search-input",
+            placeholder: "Search for books or authors" %>
+
+      <%= submit_tag "Search", name: "", class: "search-btn" do %>
+        <i class="fa-brands fa-searchengin"></i>
+      <% end %>
+    <% end %>
+  </div>
+
+  <!-- Book cards -->
+  <% if @books.present? %>
+    <% @books.each do |book| %>
+      <%= render partial: "pages/home_page_cards", locals: { book: book } %>
+    <% end %>
+  <% else %>
+    <p>No books found.</p>
+  <% end %>
+</section>

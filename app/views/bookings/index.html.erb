@@ -1,0 +1,26 @@
+<div class="container booking-user-container mt-2">
+  <!-- Styled tab bar -->
+  <div class="tab-nav mb-4">
+    <%= link_to "Pending Reads", bookings_path(status: "pending"), class: "tab-link #{'active' if @status == 'pending'}" %>
+    <%= link_to "Current Reads", bookings_path(status: "accepted"), class: "tab-link #{'active' if @status == 'accepted'}" %>
+    <%= link_to "Old Reads", bookings_path(status: "rejected"), class: "tab-link #{'active' if @status == 'rejected'}" %>
+  </div>
+  <!-- Bookings list -->
+  <div class="container booking-user-container">
+    <% @bookings.each do |booking| %>
+      <div class="booking-card custom-rounded">
+        <%= image_tag booking.book_offer.book.image_url, alt: booking.book_offer.book.title %>
+        <div class="booking-card-infos">
+          <div class="d-flex justify-content-between mb-0">
+            <h3><%= booking.book_offer.book.title %></h3>
+            <h3><i class="fa-solid fa-map-pin"></i> <%= booking.book_offer.user.address.match(/都(?<ward>[^ ]*区)/)[:ward] %></h3>
+          </div>
+          <h2 class="booking-status <%= booking.status %>"><%= booking.status.capitalize %></h2>
+          <h3><%= booking.starting_date.strftime("%b %d, %Y") %> - <%= booking.ending_date.strftime("%b %d, %Y") %></h3>
+          <h3><%= booking.book_offer.user.user_name %>'s Book</h3>
+        </div>
+      </div>
+    <% end %>
+    <%= paginate @bookings %>
+  </div>
+</div>

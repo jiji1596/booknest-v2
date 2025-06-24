@@ -1,0 +1,37 @@
+<div class="d-flex">
+  <!-- LEFT: Book Image -->
+  <div class="book-offer-infos">
+  </div>
+  <!-- CENTER: Book Description -->
+  <div class="book-offer-description">
+    <div>
+      <h5><i class="fa-solid fa-map-pin"></i> <%= book_offer.user.address.match(/都(?<ward>[^ ]*区)/)[:ward] %></h5>
+    </div>
+    <div>
+      <h3><%= distance.round(2) %>km away</h3>
+    </div>
+    <%= truncate(book_offer.description, length: 300) %>
+  </div>
+  <!-- RIGHT: User + Button -->
+  <div class="book-offer-right">
+    <div class="book-offer-user">
+      <% if book_offer.user.profile_photo.attached? %>
+        <%= cl_image_tag book_offer.user.profile_photo.key, class:"book-offer-img" %>
+      <% else %>
+        <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/skateboard.jpg" class="book-offer-img" />
+      <% end %>
+    </div>
+    <div class="book-offer-button">
+      <% if book_offer.availability == true %>
+        <% if user_signed_in? %>
+          <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">Get it</button>
+          <%= render "modal", book_offer: book_offer, booking: @booking %>
+        <% else %>
+          <button type="button" class="btn btn-warning disabled">Sign in to get the book</button>
+        <% end %>
+      <% else %>
+        <button type="button" class="btn btn-warning">Unavailable</button>
+      <% end %>
+    </div>
+  </div>
+</div>

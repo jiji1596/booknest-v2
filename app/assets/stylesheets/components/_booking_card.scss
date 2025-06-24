@@ -1,0 +1,80 @@
+.booking-user-container {
+  padding-bottom: 72px;
+}
+
+.booking-card {
+  overflow: hidden;
+  height: 152px;
+  background: white;
+  box-shadow: 0 0 15px rgba(0,0,0,0.2);
+  display: flex;
+  align-items: top;
+  position: relative;
+  margin-bottom: 16px;
+}
+
+.booking-card img {
+  height: 100%;
+  width: 136px;
+  object-fit: cover;
+}
+
+.booking-card h2 {
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 8px;
+}
+
+.booking-card h3 {
+  font-size: 14px;
+  font-weight: bold;
+  margin-bottom: 8px;
+}
+
+.booking-card p {
+  font-size: 12px;
+  line-height: 1.4;
+  opacity: .7;
+  margin-bottom: 0;
+  margin-top: 8px;
+}
+
+.booking-card .booking-card-infos {
+  flex-grow: 2;
+  padding: 16px;
+}
+
+.booking-toggle {
+  position: absolute;
+  right: 16px;
+  bottom: 16px;
+}
+
+.booking-toggle .form-check-input {
+  transform: scale(1.7);
+  margin-right: 0.5rem;
+}
+
+.text-top{
+  position: absolute;
+  right: 16px;
+  top: 16px;
+}
+
+.booking-status.pending{
+  color: blue;
+}
+
+.booking-status.accepted{
+  color: green;
+}
+
+.booking-status.rejected{
+  color:red;
+}
+
+
+
+.fa-map-pin {
+  color: red
+}

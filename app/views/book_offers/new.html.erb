@@ -1,0 +1,23 @@
+<div class="container">
+  <h2>Thanks for helping build our community!</h2>
+  <h5>"Stories are a communal currency of humanity."
+    — Tahir Shah</h5>
+  <%= simple_form_for(@book_offer, html: { class: "custom-form" }) do |f| %>
+    <%= f.input :book_id,
+      collection: Book.order(:title),
+      label_method: :title,
+      value_method: :id,
+      prompt: "Select a book",
+      label: "Select the book you wish to share" %>
+    <%= f.input :description,
+      as: :text,
+      label: "Sharing notes",
+      input_html: {
+        maxlength: 300,
+        data: { action: "keyup->character-counter#update", character_counter_target: "input" }
+      } %>
+    <div class="form-text" data-character-counter-target="counter">300 characters max</div>
+    <%= f.input :photo, as: :file, input_html: { multiple: false }, label: "Share a photo of your book" %>
+    <%= f.button :submit, "Submit Offer", class: "btn btn-primary"%>
+  <% end %>
+</div>

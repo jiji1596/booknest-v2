@@ -1,0 +1,23 @@
+<div class="container">
+  <div class="card-trip">
+    <%= image_tag @book_offer.book.image_url, alt: @book_offer.book.title %>
+    <div class="card-trip-infos">
+      <div>
+        <h2><%= @book_offer.book.title %> by <%= @book_offer.book.author %></h2>
+        <p>Published: <%= @book_offer.book.published_year %></p>
+        <p><%= @book_offer.description %></p>
+        <p><%- @book_offer.book.published_year %></p>
+        <p>"Reviews will go here"</p>
+      </div>
+    </h2>
+    <%= cl_image_tag @book_offer.user.profile_photo, class:"card-trip-user avatar-bordered", height: 300, width: 400, crop: :fill %>
+    <p>
+      <% if @book_offer.availability == true %>
+        <%= link_to "Get this book", new_book_offer_booking_path(@book_offer, @booking), class: "btn btn-primary"  %>
+      <% else %>
+        <button type="button" class="btn btn-warning">Unavailable</button>
+      <% end %>
+    </p>
+  </div>
+</div>
+</div>

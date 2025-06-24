@@ -1,0 +1,23 @@
+<!-- Search field -->
+<div class="container">
+  <div class="search-container">
+    <%= form_with url: books_path, method: :get do %>
+      <%= text_field_tag :query,
+            params[:query],
+            class: "search-input",
+            placeholder: "Search for books or authors"
+        %>
+      <%= submit_tag "Search", name: "", class: "search-btn" %>
+    <% end %>
+  </div>
+</div>
+<!-- Book Cards Section -->
+<section class="home-books-container">
+  <% if @books.present? %>
+    <% @books.each do |book| %>
+      <%= render partial: "pages/home_page_cards", locals: { book: book } %>
+    <% end %>
+  <% else %>
+    <p>No books found.</p>
+  <% end %>
+</section>

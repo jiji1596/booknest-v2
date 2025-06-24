@@ -1,0 +1,18 @@
+
+<h1>Pending Reads</h1>
+<% if !@pendings.nil? %>
+  <% @pendings.each do |booking| %>
+    <div class="booking-card custom-rounded">
+      <%= image_tag booking.book_offer.book.image_url, alt: booking.book_offer.book.title %>
+      <div class="booking-card-infos">
+        <div class="w-100 d-flex justify-content-between ">
+          <h3><%= booking.book_offer.book.title %></h3>
+          <h3><i class="fa-solid fa-map-pin"></i> <%= booking.book_offer.user.address %></h3>
+        </div>
+        <h2 class="booking-status <%= booking.status %>"> <%= booking.status.capitalize %> </h2>
+        <h3><%= booking.starting_date.strftime("%b %d, %Y")%> - <%= booking.ending_date.strftime("%b %d, %Y")%></h3>
+        <h3><%= booking.book_offer.user.user_name %>'s Book </h3>
+      </div>
+    </div>
+  <% end %>
+<% end %>

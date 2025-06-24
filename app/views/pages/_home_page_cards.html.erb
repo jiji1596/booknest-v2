@@ -1,0 +1,9 @@
+<!-- app/views/pages/_home_page_cards.html.erb -->
+<div class="card-book">
+  <%= image_tag book.image_url, alt: book.title %>
+  <div class="card-book-infos">
+    <h2><%= book.title %></h2>
+    <p><%= book.author %></p>
+    <%= link_to "", book_path(book),  class: "link-cover"  %>
+  </div>
+</div>

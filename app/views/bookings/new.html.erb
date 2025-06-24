@@ -1,0 +1,7 @@
+<div class="container">
+  <h2>Take a book out!</h2>
+  <%= simple_form_for [@book, @book_offer, @booking] do |f| %>
+    <%= f.input :starting_date,label: 'rental time', as: :string, input_html: { data: { controller: "datepicker" } } %>
+    <%= f.submit :submit, class: "form-control btn btn-success" %>
+  <% end %>
+</div>
