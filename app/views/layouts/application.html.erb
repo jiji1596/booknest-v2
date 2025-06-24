@@ -9,7 +9,7 @@
     <%= javascript_importmap_tags %>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
   </head>
-  <body>
+  <body data-current-user-id="<%= current_user ? current_user.id : "" %>">
     <% if notice %>
       <div class="flash flash-notice" data-controller="flash"><%= notice %></div>
     <% end %>
