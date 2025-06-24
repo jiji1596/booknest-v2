@@ -7,6 +7,9 @@ class Owner::BookingsController < ApplicationController
     @bookings_as_owner = current_user.bookings_as_owner
   end
 
+  def show
+  end
+
   def update
     @booking = Booking.find(params[:id])
     if params[:status].present? && %w[accepted rejected].include?(params[:status])

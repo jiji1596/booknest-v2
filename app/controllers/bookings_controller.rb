@@ -5,6 +5,9 @@ class BookingsController < ApplicationController
     @past_bookings = current_user.bookings.where("ending_date < ?", Date.today)
   end
 
+  def show
+  end
+
   def new
     @book_offer = BookOffer.find(params[:book_offer_id])
     @booking = Booking.new

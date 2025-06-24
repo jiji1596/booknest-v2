@@ -1,6 +1,8 @@
 class Booking < ApplicationRecord
   belongs_to :user
   belongs_to :book_offer
+  has_many :messages
+
   enum status: [ :pending, :accepted, :rejected ]
   validates :starting_date, presence: true
   validates :ending_date, presence: true
