@@ -9,10 +9,14 @@ Rails.application.routes.draw do
     resources :bookings, only: [:new, :create]
   end
 
-  resources :bookings, only: [:index, :edit, :update, :show]
+  resources :bookings, only: [:index, :edit, :update, :show] do
+    resources :messages, only: :create
+  end
 
   namespace :owner do
-    resources :bookings, only: [:index, :update, :show]
+    resources :bookings, only: [:index, :update, :show] do
+      resources :messages, only: :create
+    end
     resources :book_offers, only: :index
   end
   get "up" => "rails/health#show", as: :rails_health_check
