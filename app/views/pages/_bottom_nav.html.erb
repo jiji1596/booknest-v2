@@ -5,25 +5,28 @@
       <p class="nav-label">Home</p>
     <% end %>
   </div>
-
   <div class="footer-link">
     <%= link_to owner_bookings_path, class: "footer-nav #{'active' if controller_path == 'owner/bookings'}" do %>
       <i class="fas fa-book nav-icon"></i>
       <p class="nav-label">My Books</p>
     <% end %>
   </div>
-
   <div class="footer-link">
     <%= link_to bookings_path, class: "footer-nav #{'active' if controller_path == 'bookings'}" do %>
       <i class="fas fa-book-reader nav-icon"></i>
       <p class="nav-label">Rented</p>
     <% end %>
   </div>
-
   <div class="footer-link">
     <%= link_to new_book_offer_path, class: "footer-nav #{'active' if controller_path == 'book_offers' && action_name == 'new'}" do %>
       <i class="fas fa-plus-circle nav-icon"></i>
       <p class="nav-label">Add Book</p>
+    <% end %>
+  </div>
+  <div class="footer-link">
+    <%= link_to edit_user_registration_path, class: "footer-nav #{'active' if controller_path == 'book_offers' && action_name == 'new'}" do %>
+      <i class="fas fa-solid fa-user"></i>
+      <p class="nav-label">User</p>
     <% end %>
   </div>
 </footer>

@@ -11,7 +11,7 @@ class BooksController < ApplicationController
 
   def show
     @book = Book.find(params[:id])
-    @book_offers = @book.book_offers
+    @book_offers = @book.book_offers.where.not(user_id: current_user.id)
     @booking = Booking.new
     @booked_periods = Booking.where(book_offer: @book_offers).where.not(status: 'rejected').pluck(:starting_date, :ending_date)
     users = @book_offers.map(&:user).select(&:geocoded?)

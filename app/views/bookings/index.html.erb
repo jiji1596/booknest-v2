@@ -1,26 +1,67 @@
 <div class="container booking-user-container mt-2">
-  <!-- Styled tab bar -->
-  <div class="tab-nav mb-4">
-    <%= link_to "Pending Reads", bookings_path(status: "pending"), class: "tab-link #{'active' if @status == 'pending'}" %>
-    <%= link_to "Current Reads", bookings_path(status: "accepted"), class: "tab-link #{'active' if @status == 'accepted'}" %>
-    <%= link_to "Old Reads", bookings_path(status: "rejected"), class: "tab-link #{'active' if @status == 'rejected'}" %>
-  </div>
-  <!-- Bookings list -->
-  <div class="container booking-user-container">
-    <% @bookings.each do |booking| %>
-      <div class="booking-card custom-rounded">
-        <%= image_tag booking.book_offer.book.image_url, alt: booking.book_offer.book.title %>
-        <div class="booking-card-infos">
-          <div class="d-flex justify-content-between mb-0">
+  <ul class="nav tabs-underlined" id="myTab" role="tablist">
+    <li class="nav-item" role="presentation">
+      <span class="nav-link tab-underlined active" id="accepted-tab" data-bs-toggle="tab" data-bs-target="#accepted-tab-pane" role="tab" aria-controls="accepted-tab-pane" aria-selected="true">Accepted</span>
+    </li>
+    <li class="nav-item" role="presentation">
+      <span class="nav-link tab-underlined" id="pending-tab" data-bs-toggle="tab" data-bs-target="#pending-tab-pane" role="tab" aria-controls="pending-tab-pane" aria-selected="false">Pending</span>
+    </li>
+    <li class="nav-item" role="presentation">
+      <span class="nav-link tab-underlined" id="past-tab" data-bs-toggle="tab" data-bs-target="#past-tab-pane" role="tab" aria-controls="past-tab-pane" aria-selected="false">Past</span>
+    </li>
+  </ul>
+  <div class="tab-content" id="myTabContent">
+    <div class="tab-pane fade py-3 show active" id="accepted-tab-pane" role="tabpanel" aria-labelledby="accepted-tab" tabindex="0">
+      <% @accepted_bookings.each do |booking| %>
+        <div class="booking-card custom-rounded">
+          <% if booking.book_offer.photo.attached? %>
+            <%= cl_image_tag booking.book_offer.photo.key %>
+          <% else %>
+            <%= image_tag booking.book_offer.book.image_url, alt: booking.book_offer.book.title %>
+          <% end %>
+          <div class="booking-card-infos">
             <h3><%= booking.book_offer.book.title %></h3>
-            <h3><i class="fa-solid fa-map-pin"></i> <%= booking.book_offer.user.address.match(/都(?<ward>[^ ]*区)/)[:ward] %></h3>
+            <p><strong>Author:</strong> <%= booking.book_offer.book.author %></p>
+            <p><strong>Published:</strong> <%= booking.book_offer.book.published_year %></p>
+            <p><strong>Location:</strong> <%= booking.book_offer.user.address.match(/都(?<ward>[^ ]*区)/)[:ward] %></p>
           </div>
-          <h2 class="booking-status <%= booking.status %>"><%= booking.status.capitalize %></h2>
-          <h3><%= booking.starting_date.strftime("%b %d, %Y") %> - <%= booking.ending_date.strftime("%b %d, %Y") %></h3>
-          <h3><%= booking.book_offer.user.user_name %>'s Book</h3>
         </div>
-      </div>
-    <% end %>
-    <%= paginate @bookings %>
+      <% end %>
+    </div>
+    <div class="tab-pane fade py-3" id="pending-tab-pane" role="tabpanel" aria-labelledby="pending-tab" tabindex="0">
+      <% @pending_bookings.each do |booking| %>
+        <div class="booking-card custom-rounded">
+          <% if booking.book_offer.photo.attached? %>
+            <%= cl_image_tag booking.book_offer.photo.key %>
+          <% else %>
+            <%= image_tag booking.book_offer.book.image_url, alt: booking.book_offer.book.title %>
+          <% end %>
+          <div class="booking-card-infos">
+            <div class="d-flex justify-content-between mb-0">
+              <h3><%= booking.book_offer.book.title %></h3>
+              <h3><i class="fa-solid fa-map-pin"></i> <%= booking.book_offer.user.address %></h3>
+            </div>
+            <h3><%= booking.starting_date.strftime("%b %d, %Y") %> - <%= booking.ending_date.strftime("%b %d, %Y") %></h3>
+          </div>
+        </div>
+      <% end %>
+    </div>
+    <div class="tab-pane fade py-3" id="past-tab-pane" role="tabpanel" aria-labelledby="past-tab" tabindex="0">
+      <% @past_bookings.each do |booking| %>
+        <div class="booking-card custom-rounded">
+          <% if booking.book_offer.photo.attached? %>
+            <%= cl_image_tag booking.book_offer.photo.key %>
+          <% else %>
+            <%= image_tag booking.book_offer.book.image_url, alt: booking.book_offer.book.title %>
+          <% end %>
+          <div class="booking-card-infos">
+            <h3><%= booking.book_offer.book.title %></h3>
+            <p><strong>Author:</strong> <%= booking.book_offer.book.author %></p>
+            <p><strong>Published:</strong> <%= booking.book_offer.book.published_year %></p>
+            <p><strong>Location:</strong> <%= booking.book_offer.user.address.match(/都(?<ward>[^ ]*区)/)[:ward] %></p>
+          </div>
+        </div>
+      <% end %>
+    </div>
   </div>
 </div>

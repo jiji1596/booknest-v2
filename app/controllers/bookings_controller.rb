@@ -1,8 +1,8 @@
 class BookingsController < ApplicationController
   def index
-    status = params[:status] || "pending"
-    @status = status
-    @bookings = current_user.bookings.where(status: status).page(params[:page]).per(8)
+    @pending_bookings = current_user.bookings.where(status: "pending")
+    @accepted_bookings = current_user.bookings.where(status: "accepted")
+    @past_bookings = current_user.bookings.where("ending_date < ?", Date.today)
   end
 
   def new

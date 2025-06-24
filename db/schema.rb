@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2025_05_23_021636) do
+ActiveRecord::Schema[7.1].define(version: 2025_06_24_075633) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -43,7 +43,7 @@ ActiveRecord::Schema[7.1].define(version: 2025_05_23_021636) do
   end
 
   create_table "book_offers", force: :cascade do |t|
-    t.boolean "availability"
+    t.boolean "availability", default: true
     t.text "description"
     t.bigint "user_id", null: false
     t.bigint "book_id", null: false
@@ -74,6 +74,16 @@ ActiveRecord::Schema[7.1].define(version: 2025_05_23_021636) do
     t.string "image_url"
   end
 
+  create_table "messages", force: :cascade do |t|
+    t.text "content"
+    t.bigint "user_id", null: false
+    t.bigint "booking_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["booking_id"], name: "index_messages_on_booking_id"
+    t.index ["user_id"], name: "index_messages_on_user_id"
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
@@ -96,4 +106,6 @@ ActiveRecord::Schema[7.1].define(version: 2025_05_23_021636) do
   add_foreign_key "book_offers", "users"
   add_foreign_key "bookings", "book_offers"
   add_foreign_key "bookings", "users"
+  add_foreign_key "messages", "bookings"
+  add_foreign_key "messages", "users"
 end
